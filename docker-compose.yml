@@ -1,0 +1,31 @@
+version: '3'
+services:
+  sommercamp-backend:
+    container_name: sommercamp-backend
+    build:
+      context: .
+      dockerfile: server.dockerfile
+    volumes:
+      - ./src:/app/src
+      - ./requirements.txt:/app/requirements.txt
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+  
+  sommercamp-db:
+    container_name: sommercamp-db
+    platform: linux/x86_64
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: Basti0307
+      MYSQL_PASSWORD: password
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
