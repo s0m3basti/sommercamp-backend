@@ -12,20 +12,14 @@ services:
       - .env
     ports:
       - "8000:8000"
-  
+
   sommercamp-db:
     container_name: sommercamp-db
-    platform: linux/x86_64
-    image: mysql
+    image: arm64v8/mysql
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: example
-      MYSQL_USER: Basti0307
-      MYSQL_PASSWORD: password
-
-  phpmyadmin:
-    image: phpmyadmin
+      MYSQL_USER: user
+      MYSQL_PASSWORD: Hallo123
     ports:
-      - 8080:80
-    environment:
-      - PMA_ARBITRARY=1
+          - "3306:3306"

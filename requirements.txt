@@ -1,6 +1,7 @@
 fastapi[all]
 uvicorn[standard]
 pydantic
-bcrypt
 SQLAlchemy
+pymysql
 alembic
+passlib[bcrypt]
